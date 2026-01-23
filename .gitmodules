@@ -1,0 +1,8 @@
+[submodule "sdks/vendor/isaaclab"]
+	path = sdks/vendor/isaaclab
+	url = git@github.com:isaac-sim/IsaacLab.git
+	shallow = true
+[submodule "sdks/vendor/isaacsim"]
+	path = sdks/vendor/isaacsim
+	url = git@github.com:isaac-sim/IsaacSim.git
+	shallow = true

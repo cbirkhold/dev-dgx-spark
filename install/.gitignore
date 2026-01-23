@@ -1,0 +1,5 @@
+# If there is a separator at the beginning or middle (or both) of the pattern,
+# then the pattern is relative to the directory of the .gitignore file itself.
+# Otherwise the pattern may also match at any level below the .gitignore file.
+
+/.install

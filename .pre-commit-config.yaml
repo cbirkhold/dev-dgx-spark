@@ -1,0 +1,26 @@
+exclude: ^(sdks/vendor/)
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-json
+      - id: check-toml
+      - id: check-yaml
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+  - repo: local
+    hooks:
+      - id: prettier
+        name: Formatting (prettier)
+        entry: npx prettier --check
+        language: system
+        types: [markdown]
+      - id: shellcheck
+        name: Linting (shellcheck)
+        entry: shellcheck
+        language: system
+        types: [shell]
