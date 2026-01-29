@@ -29,6 +29,15 @@ ISAACLAB_PATH="${GIT_ROOT_DIR}/sdks/vendor/isaaclab"
 ISAAC_PATH="${ISAACLAB_PATH}/_isaac_sim"
 VENV_DIR="${GIT_ROOT_DIR}/.venv"
 
+# Find the omni.kit.pip_archive extension (version varies with
+# kit-kernel build version, platform and build configuration)
+PIP_ARCHIVE_DIR=$(basename "$(find "${ISAAC_PATH}/extscache" -maxdepth 1 -xtype d -name 'omni.kit.pip_archive-*' -print -quit 2>/dev/null)")
+
+if [[ -z "${PIP_ARCHIVE_DIR}" ]]; then
+    print_error "omni.kit.pip_archive extension NOT in extscache!"
+    exit 1
+fi
+
 # -----------------------------------------------------------------
 # Track the hashes of Isaac Sim scripts we are emulating
 print_section "Checking Isaac Sim script hashes"
@@ -144,7 +153,7 @@ ${ISAAC_PATH}/kit/kernel/py
 ${ISAAC_PATH}/kit/plugins/bindings-python
 ${ISAAC_PATH}/exts/isaacsim.robot_motion.lula/pip_prebundle
 ${ISAAC_PATH}/exts/isaacsim.asset.exporter.urdf/pip_prebundle
-${ISAAC_PATH}/extscache/omni.kit.pip_archive-0.0.0+69cbf6ad.la64.cp311/pip_prebundle
+${ISAAC_PATH}/extscache/${PIP_ARCHIVE_DIR}/pip_prebundle
 ${ISAAC_PATH}/exts/omni.isaac.core_archive/pip_prebundle
 ${ISAAC_PATH}/exts/omni.isaac.ml_archive/pip_prebundle
 ${ISAAC_PATH}/exts/omni.pip.compute/pip_prebundle
