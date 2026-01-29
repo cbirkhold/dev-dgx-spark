@@ -45,5 +45,13 @@ run_command ./build.sh
 cd - > /dev/null || exit 1
 
 # -----------------------------------------------------------------
+# Link Isaac Sim release from root of repo
+cd "${GIT_ROOT_DIR}" || exit 1
+
+run_command ln -sfn "sdks/vendor/isaacsim/_build/linux-aarch64/release" "_isaac_sim"
+
+cd - > /dev/null || exit 1
+
+# -----------------------------------------------------------------
 print_done
 # =================================================================

@@ -4,3 +4,6 @@
 
 /.venv/
 *.local
+
+/_isaac_sim
+/activate
